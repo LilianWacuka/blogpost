@@ -1,11 +1,16 @@
-import Image from "next/image";
+import { getPosts } from "@/data/posts";
+import PostCard from "@/components/PostCard";
 
-export default function Home() {
+export default function HomePage(){
+  const posts = getPosts();
+  if (posts.length === 0){
+    return<p>Yooh! No posts.Create one.</p>;
+  }
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-       blog post
-      </main>
+    <div className="container mx-auto p-4 flex-col gap-4">
+      {posts.map((post) => (
+        <PostCard key={post.id} post={post} />
+      ))}
     </div>
   );
 }
