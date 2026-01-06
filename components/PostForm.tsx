@@ -30,12 +30,14 @@ export default function PostForm({
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
+        className="font-bold text-lg text-white-800"
       />
       <Textarea
         placeholder="post content"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         required
+        className="font-bold text-lg text-white-800"
       />
       <Button type="submit">Submit</Button>
     </form>

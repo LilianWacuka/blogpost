@@ -2,14 +2,17 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+function Card({ className, style, ...props }: React.ComponentProps<"div">) {
+  const mergedStyle = { color: 'rgb(248, 240, 231)', ...(style as React.CSSProperties) };
+
   return (
     <div
       data-slot="card"
       className={cn(
-        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+        "bg-card text-card-text flex flex-col gap-6 rounded-xl border py-4 shadow-sm",
         className
       )}
+      style={mergedStyle}
       {...props}
     />
   )
