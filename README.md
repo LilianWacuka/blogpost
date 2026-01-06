@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blogpost — Minimal Next.js App
 
-## Getting Started
+This repository is a small demo blog built with the Next.js App Router. It provides a minimal UI for creating, listing, viewing, editing and deleting posts.
 
-First, run the development server:
+Key ideas
+- App Router-based project (files under `app/`).
+- Posts are stored in the browser `localStorage` (client-side) for this demo — no database required.
+- Routes provided: home (`/`), create post (`/post/new`), post detail (`/post/[id]`), edit (`/post/[id]/edit`).
+
+What you get
+- A homepage that lists posts stored in the browser.
+- A create-post page (client) that saves new posts to `localStorage`.
+- A post detail page that shows the full post and links to edit/delete.
+- An edit page that loads a post from `localStorage`, lets you update it, and saves back to `localStorage`.
+- Client-side delete that removes the post from `localStorage` and returns to the homepage.
+
+Project layout (important files)
+- `app/page.tsx` — homepage (renders a client posts list component).
+- `app/post/new/page.tsx` — create-post form (client component).
+- `app/post/[...slug]/page.tsx` or `app/post/[id]/page.tsx` — post detail (may be server or client depending on edits).
+- `app/post/[id]/edit/page.tsx` — edit page (client component that updates localStorage).
+- `components/PostForm.tsx` — reusable form used for create/edit.
+- `components/PostsClient.tsx` — client list that reads posts from localStorage.
+- `components/PostCard.tsx` — UI for a single post preview.
+- `data/posts.ts` — lightweight server helpers (types and server helpers). Note: in this demo they are not the authoritative storage for client-created posts.
+
+How to run
+1. Install dependencies (this project uses `pnpm` in examples):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Start the development server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+# or
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Open http://localhost:3000 in your browser.
 
-## Learn More
+Usage notes
+- Create a post: Click the "Create Post" button in the nav, fill the form and submit. The post is saved to localStorage and the app redirects to the homepage.
+- Edit a post: From a post detail or the list, click Edit — you are taken to an edit form that loads the post from localStorage and saves updates back to localStorage.
+- Delete a post: Use the Delete button on the post detail or in the list. The client delete removes the post from localStorage and refreshes the UI.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
