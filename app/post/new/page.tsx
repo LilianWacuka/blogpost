@@ -13,7 +13,6 @@ export default function NewPostPage(){
                         createdAt: new Date().toISOString(),
                 };
 
-                // persist to localStorage so client can read it on the homepage
                 try {
                     const raw = localStorage.getItem('posts');
                     const arr = raw ? JSON.parse(raw) : [];

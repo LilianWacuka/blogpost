@@ -21,9 +21,7 @@ export default function PostCard({
                 </p>
 
                 <div className="mt-2">
-                    {/* <Link href={`/post/${post.id}`} className="text-blue-600 underline mr-4">
-                        Read more
-                    </Link> */}
+                   
 
                     {showActions && (
                         <span className="inline-flex items-center gap-3">
