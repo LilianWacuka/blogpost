@@ -10,8 +10,8 @@ export default function Navbar(){
         <Button>My Posts</Button>
         </Link>
         <div className='flex gap-4'>
-            <Link href='/' className='hover:underline'>
-            <Button>Home</Button>
+            <Link href='/login' className='hover:underline'>
+            <Button>Login</Button>
             </Link>
             <Link href='/post/new'>
                 <Button>Create Post</Button>
