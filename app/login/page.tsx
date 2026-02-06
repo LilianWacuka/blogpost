@@ -6,16 +6,16 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 
-export default function loginPage(){
+export default function LoginPage(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const router = useRouter();
-    useEffect(() =>{
-        const token = localStorage.getItem('token');
-        if(token){
-            router.push('/');
-        }
-    })
+    // useEffect(() =>{
+    //     const token = localStorage.getItem('token');
+    //     if(token){
+    //         router.push('/');
+    //     }
+    // }, []);
       
 
  async function handleLogin(e: React.FormEvent){
@@ -23,7 +23,7 @@ export default function loginPage(){
     
     const response = await fetch('/api/login',{
         method: 'POST',
-        headers: { 'content-type': 'application/json'},
+        headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({ email, password}),
     });
     const data = await response.json();
@@ -38,13 +38,13 @@ export default function loginPage(){
     <div className="max-w-md mx-auto mt-10">
         <Card>
             <form onSubmit={handleLogin} className="space-y-4 p-4">
-                <Input className="border rounded-lg"
+                <Input className="text-black border rounded-lg"
                 type="email"
                 placeholder="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 />
-                <Input className="border rounded-lg"
+                <Input className="text-black border rounded-lg"
                 type="password"
                 placeholder="password"
                 value={password}

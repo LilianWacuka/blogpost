@@ -36,20 +36,20 @@ export default function RegisterPage() {
     <div className="max-w-md mx-auto mt-10">
      <Card>
       <form onSubmit={handleSubmit} className="space-y-4 p-2">
-        <Input
+        <Input className="text-2xl font-bold text-black"
           placeholder="Username"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           required
         />
-        <Input className="text-2xl font-bold text-white"
+        <Input className="text-2xl font-bold text-black"
           type="email"
           placeholder="Email"
           value= {email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <Input
+        <Input className="text-2xl font-bold text-black"
           type="password"
           placeholder="Password"
           value={password}
