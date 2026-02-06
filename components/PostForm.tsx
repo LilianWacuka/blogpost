@@ -37,7 +37,7 @@ export default function PostForm({
         value={content}
         onChange={(e) => setContent(e.target.value)}
         required
-        className="font-bold text-lg text-white-800"
+        className="font-bold text-lg text-black-800"
       />
       <Button type="submit">Submit</Button>
     </form>

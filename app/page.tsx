@@ -1,5 +1,6 @@
-import { redirect } from 'next/navigation';
-export default function HomePage() {
+import PostsClient from '@/components/PostsClient';
 
-  redirect('/register');
-}
+export default function HomePage() {
+  return (
+  <PostsClient/>
+)}

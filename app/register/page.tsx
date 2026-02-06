@@ -26,7 +26,7 @@ export default function RegisterPage() {
     if (response.ok) {
       setMessage("Registration successful!");
       // redirect to home
-      router.push('/')
+      router.push('/post/new')
     } else {
       setMessage(data.error || "Registration failed");
     }
@@ -45,7 +45,7 @@ export default function RegisterPage() {
         <Input className="text-2xl font-bold text-white"
           type="email"
           placeholder="Email"
-          value={email}
+          value= {email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
