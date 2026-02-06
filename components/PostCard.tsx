@@ -15,8 +15,8 @@ export default function PostCard({
         <Card className="mb-4">
             <CardContent className="p-4">
                 <h2 className="text-xl font-semibold text-black">{post.title}</h2>
-                <p className="text-black-400">{post.content}</p>
-                <p className="text-sm text-black-800">
+                <p className="text-black">{post.content}</p>
+                <p className="text-xl font-bold text-purple-600">
                     on {new Date(post.createdAt).toLocaleDateString()}
                 </p>
 
