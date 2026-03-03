@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/context/authContext";
 
 export default function RegisterPage() {
   const [userName, setUserName] = useState("");
@@ -12,6 +13,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const router = useRouter();
+  const { login } = useAuth();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -25,7 +27,9 @@ export default function RegisterPage() {
     const data = await response.json();
     if (response.ok) {
       setMessage("Registration successful!");
-      // redirect to home
+      // Log in user automatically after registration
+      login(data.user.id);
+      // redirect to create post
       router.push('/post/new')
     } else {
       setMessage(data.error || "Registration failed");

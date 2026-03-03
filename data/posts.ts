@@ -3,7 +3,7 @@ export interface Post {
   title: string;
   content: string;
   createdAt: string;
- 
+  userId: string;
 }
 let posts: Post[] =[];
 

@@ -5,17 +5,19 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
+import { useAuth } from "@/context/authContext";
 
 export default function LoginPage(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const router = useRouter();
-    // useEffect(() =>{
-    //     const token = localStorage.getItem('token');
-    //     if(token){
-    //         router.push('/');
-    //     }
-    // }, []);
+    const { isLoggedIn, login } = useAuth();
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            router.push('/');
+        }
+    }, [isLoggedIn, router]);
       
 
  async function handleLogin(e: React.FormEvent){
@@ -29,6 +31,8 @@ export default function LoginPage(){
     const data = await response.json();
     if(response.ok){
         localStorage.setItem('token', data.token);
+        // Log in user using auth context
+        login(data.user.id);
         router.push('/')
     } else {
         alert(data.error || "Login Failed fundaa")

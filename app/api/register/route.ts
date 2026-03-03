@@ -24,7 +24,14 @@ export async function POST(request: NextRequest) {
     const newUser: User = { id, userName, email, password };
     registerUser(newUser);
 
-    return NextResponse.json({ message: 'User registered successfully' }, { status: 201 });
+    return NextResponse.json({ 
+      message: 'User registered successfully',
+      user: {
+        id: newUser.id,
+        userName: newUser.userName,
+        email: newUser.email,
+      }
+    }, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
