@@ -33,10 +33,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthContext.Provider value={{ userId, isLoggedIn: !!userId, login, logout }}>
-      {/* WE REMOVED THE TOP-LEVEL 'IF' BLOCK.
-          Now the Provider is always present, so useAuth() won't throw an error.
-          We only hide the children (like the Navbar content) until we know the auth status.
-      */}
       {!isLoading ? children : null} 
     </AuthContext.Provider>
   );
